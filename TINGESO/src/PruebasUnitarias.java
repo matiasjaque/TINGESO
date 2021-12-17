@@ -18,7 +18,7 @@ public class PruebasUnitarias {
     JavascriptExecutor js;
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\matia\\OneDrive\\Escritorio\\MINGESO\\TINGESO\\TINGESO\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
         driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
@@ -231,7 +231,7 @@ public class PruebasUnitarias {
         driver.close();
     }
     @Test
-    public void untitled() {
+    public void verOrdenes() {
         driver.get("http://automationpractice.com/index.php");
         driver.findElement(By.linkText("Sign in")).click();
         try {
@@ -317,7 +317,6 @@ public class PruebasUnitarias {
         catch(InterruptedException e) {
             e.printStackTrace();
         }
-        driver.manage().window().setSize(new Dimension(1552, 832));
         try {
             Thread.sleep(1000);
         }
@@ -356,7 +355,6 @@ public class PruebasUnitarias {
         catch(InterruptedException e) {
             e.printStackTrace();
         }
-        driver.manage().window().setSize(new Dimension(1552, 832));
         try {
             Thread.sleep(4000);
         }
@@ -373,44 +371,28 @@ public class PruebasUnitarias {
         driver.close();
     }
     @Test
-    public void listaDeseo() {
+    public void agregarListaDeseoSinSesion() {
         driver.get("http://automationpractice.com/index.php");
-        driver.manage().window().setSize(new Dimension(1552, 832));
-        driver.findElement(By.linkText("Quick view")).click();
-        try {
-            Thread.sleep(5000);
-        }
-        catch(InterruptedException e) {
-            e.printStackTrace();
-        }
-        js.executeScript("window.scrollTo(0,800)");
-        try {
-            Thread.sleep(5000);
-        }
-        catch(InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.switchTo().frame(1);
-        try {
-            Thread.sleep(5000);
-        }
-        catch(InterruptedException e) {
-            e.printStackTrace();
-        }
+        driver.findElement(By.cssSelector("#homefeatured > .ajax_block_product:nth-child(5) .button:nth-child(2) > span")).click();
         driver.findElement(By.id("wishlist_button")).click();
+        {
+            WebElement element = driver.findElement(By.id("send_friend_button"));
+            Actions builder = new Actions(driver);
+            builder.moveToElement(element).perform();
+        }
+        {
+            WebElement element = driver.findElement(By.tagName("body"));
+            Actions builder = new Actions(driver);
+            builder.moveToElement(element, 0, 0).perform();
+        }
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         }
         catch(InterruptedException e) {
             e.printStackTrace();
         }
-        driver.findElement(By.cssSelector(".fancybox-item")).click();
-        try {
-            Thread.sleep(5000);
-        }
-        catch(InterruptedException e) {
-            e.printStackTrace();
-        }
+        String resultado = driver.findElement(By.xpath("//p[@class='fancybox-error']")).getText();
+        assertEquals("You must be logged in to manage your wishlist.",resultado);
         driver.close();
     }
 
