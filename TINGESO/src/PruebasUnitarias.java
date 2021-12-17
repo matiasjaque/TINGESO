@@ -18,6 +18,7 @@ public class PruebasUnitarias {
     JavascriptExecutor js;
     @Before
     public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\matia\\OneDrive\\Escritorio\\MINGESO\\TINGESO\\TINGESO\\chromedriver.exe");
         driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
@@ -306,5 +307,117 @@ public class PruebasUnitarias {
         }
         driver.close();
     }
+    // ENCONTRAR UN ARTICULO DE LA TIENDA FILTRANDO EN BUSQUEDA
+    @Test
+    public void buscarArticulo() throws InterruptedException {
+        driver.get("http://automationpractice.com/index.php");
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.manage().window().setSize(new Dimension(1552, 832));
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("search_query_top")).click();
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("search_query_top")).sendKeys("blou");
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("search_query_top")).sendKeys(Keys.ENTER);
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
+    }
+    @Test
+    public void informacionPersonal() {
+        driver.get("http://automationpractice.com/index.php");
+        try {
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.manage().window().setSize(new Dimension(1552, 832));
+        try {
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.linkText("My personal info")).click();
+        try {
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
+    }
+    @Test
+    public void listaDeseo() {
+        driver.get("http://automationpractice.com/index.php");
+        driver.manage().window().setSize(new Dimension(1552, 832));
+        driver.findElement(By.linkText("Quick view")).click();
+        try {
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        js.executeScript("window.scrollTo(0,800)");
+        try {
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.switchTo().frame(1);
+        try {
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("wishlist_button")).click();
+        try {
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.cssSelector(".fancybox-item")).click();
+        try {
+            Thread.sleep(5000);
+        }
+        catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
+    }
+
 
 }
+
+
+
+
+
