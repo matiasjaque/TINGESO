@@ -195,6 +195,116 @@ public class PruebasUnitarias {
         driver.findElement(By.cssSelector("li:nth-child(2) > .btn > span")).click();
         driver.close();
     }
+    @Test
+    public void realizarPedido() {
+        driver.get("http://automationpractice.com/index.php");
+        driver.findElement(By.cssSelector("#homefeatured > .ajax_block_product:nth-child(5) .button:nth-child(2) > span")).click();
+        driver.findElement(By.id("color_13")).click();
+        driver.findElement(By.cssSelector(".exclusive > span")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.cssSelector(".button-medium > span")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.cssSelector(".standard-checkout > span")).click();
+        driver.findElement(By.id("email")).click();
+        driver.findElement(By.id("email")).sendKeys("MisPruebas@gmail.com");
+        driver.findElement(By.id("passwd")).sendKeys("PruebasUnitarias");
+        driver.findElement(By.cssSelector("#SubmitLogin > span")).click();
+        driver.findElement(By.cssSelector(".button:nth-child(4) > span")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("cgv")).click();
+        driver.findElement(By.cssSelector(".standard-checkout > span")).click();
+        driver.findElement(By.linkText("Pay by bank wire (order processing will be longer)")).click();
+        driver.findElement(By.cssSelector("#cart_navigation span")).click();
+        driver.close();
+    }
+    @Test
+    public void untitled() {
+        driver.get("http://automationpractice.com/index.php");
+        driver.findElement(By.linkText("Sign in")).click();
+        try {
+            Thread.sleep(1000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.cssSelector(".form_content > .form-group:nth-child(1)")).click();
+        try {
+            Thread.sleep(1000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("email")).click();
+        driver.findElement(By.id("email")).sendKeys("MisPruebas@gmail.com");
 
+        driver.findElement(By.id("passwd")).sendKeys("PruebasUnitarias");
+        driver.findElement(By.cssSelector("#SubmitLogin > span")).click();
+        try {
+            Thread.sleep(1000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.cssSelector(".col-xs-12:nth-child(1) > .myaccount-link-list > li:nth-child(1) span")).click();
+        try {
+            Thread.sleep(3000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
+    }
+    @Test
+    public void visualizarVestido() {
+        driver.get("http://automationpractice.com/index.php");
+        driver.manage().window().setSize(new Dimension(945, 1012));
+        driver.findElement(By.cssSelector("#homefeatured > .ajax_block_product:nth-child(1) .icon-eye-open")).click();
+        driver.switchTo().frame(1);
+        try {
+            Thread.sleep(3000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("thumb_3")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("thumb_2")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("thumb_4")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.id("thumb_3")).click();
+        try {
+            Thread.sleep(2000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.switchTo().defaultContent();
+        driver.findElement(By.cssSelector(".fancybox-item")).click();
+        try {
+            Thread.sleep(1000);
+        }catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.close();
+    }
 
 }
