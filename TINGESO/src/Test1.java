@@ -18,7 +18,7 @@ public class Test1{
     JavascriptExecutor js;
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\matia\\OneDrive\\Escritorio\\MINGESO\\TINGESO\\TINGESO\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
         driver = new ChromeDriver();
         js = (JavascriptExecutor) driver;
         vars = new HashMap<String, Object>();
@@ -46,5 +46,9 @@ public class Test1{
         driver.findElement(By.id("message")).click();
         driver.findElement(By.id("message")).sendKeys("Problema");
         driver.findElement(By.cssSelector("#submitMessage > span")).click();
+    }
+    @Test
+    public void untitled() {
+
     }
 }
